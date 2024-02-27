@@ -1,0 +1,59 @@
+/* 표 전체에 대한 스타일 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* 표 행에 대한 스타일 */
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* 표 헤더 셀에 대한 스타일 */
+th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* 표 데이터 셀에 대한 스타일 */
+td {
+    padding: 8px;
+}
+
+/* 짝수 행에 대한 배경색 지정 */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 마우스 호버시 배경색 변경 */
+tr:hover {
+    background-color: #ddd;
+}
+
+/* 링크에 대한 스타일 */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 링크에 호버 시 색상 변경 */
+a:hover {
+    color: darkblue;
+}
+
+.button_number {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* 필요에 따라 조정 가능 */
+}
+
+.button_number .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button_number button {
+    margin: 5px; /* 각 버튼 사이의 간격 조정 가능 */
+}

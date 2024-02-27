@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <link rel="stylesheet" type="text/css" href="/css/css.css">
+
+</head>
+
+<body>
+  <h1><a href="/index">공시 검색</a></h1>
+  <div class="col-md-12">
+    <!-- 목록 출력 영력 -->
+    <table class="table table-horizontal table-bordered">
+
+      <tr th:each="post: ${corpOverview}">
+        <th>회사코드</th>
+        <td th:text="${post.getCorp_code()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>정식명칭</th>
+        <td th:text="${post.getCorp_name()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>영문명칭</th>
+        <td th:text="${post.getCorp_name_eng()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>종목명</th>
+        <td th:text="${post.getStock_name()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>대표자명</th>
+        <td th:text="${post.getCeo_nm()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>법인구분</th>
+        <td th:text="${post.getCorp_cls()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>법인등록번호</th>
+        <td th:text="${post.getJurir_no()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>사업자등록번호</th>
+        <td th:text="${post.getBizr_no()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>주소</th>
+        <td th:text="${post.getAdres()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>홈페이지</th>
+        <td th:text="${post.getHm_url()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>전화번호</th>
+        <td th:text="${post.getPhn_no()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>팩스번호</th>
+        <td th:text="${post.getFax_no()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>업종코드</th>
+        <td th:text="${post.getInduty_code()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>설립입</th>
+        <td th:text="${post.getEst_dt()}"></td>
+      </tr>
+
+      <tr th:each="post: ${corpOverview}">
+        <th>결산원</th>
+        <td th:text="${post.getAcc_mt()}"></td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <button>
+    <a href="javascript:history.back()" class="btn btn-primary">이전</a>
+  </button>
+
+
+</body>
+</html>

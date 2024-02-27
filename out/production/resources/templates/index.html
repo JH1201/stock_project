@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/css.css">
+
+
+
+    <!--<script th:inline="javascript">
+        // 페이지 로딩 시 실행되는 함수
+        window.onload = function() {
+            // currentPage 값 가져오기
+            var currentPage = [[${currentPage}]];
+            // totalPages 값 가져오기
+            var totalPages = [[${totalPages}]];
+
+            // 조건 확인 및 처리
+            if (currentPage > totalPages) {
+                // 팝업 표시
+                alert("페이지를 이동할 수 없습니다.");
+
+                window.location.href = '/index?page=' + (currentPage-1); // 이동할 링크 설정
+            }
+
+            // 조건 확인 및 처리
+            if (currentPage < 1) {
+                // 팝업 표시
+                alert("페이지를 이동할 수 없습니다.");
+
+                window.location.href = '/index?page=' + currentPage+1; // 이동할 링크 설정
+            }
+        };
+        /*]]>*/
+    </script>-->
+
+</head>
+
+<body>
+    <h1><a href="/index">공시 검색</a></h1>
+
+    <div >
+        <form action="/searchResult" method="get">
+            <input type="text" style="display: inline-block" name="corp_name" placeholder="회사명 입력">
+            <button type="submit" style="display: inline-block">검색</button>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+        <!-- 목록 출력 영력 -->
+        <table id="postTable" class="table table-horizontal table-bordered">
+            <tr>
+                <th>게시글번호</th>
+                <th>고유번호</th>
+                <th>정식명칭</th>
+                <th>종목코드</th>
+                <th>최종변경일자</th>
+            </tr>
+            <tr th:each="post: ${postsPages}">
+                <td th:text="${post.id}"></td>
+                <td th:text="${post.corp_code}"></td>
+                <td><a th:href="@{/corpOverview(corpCode=${post.corp_code})}" th:text="${post.corp_name}"></a></td>
+                <td th:text="${post.stock_code}"></td>
+                <td th:text="${post.modify_date}"></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- 페이지 버튼 -->
+    <div th:if="${totalPages > 1}">
+        <div class="button_number">
+            <div class="row">
+                <button style="display: inline-block">
+                    <a class="page-link" th:href="@{${'/index'}}">첫 페이지</a>
+                </button>
+
+                <button th:if="${currentPage > 1}" style="display: inline-block">
+                    <a class="page-link" th:href="@{${'/index?page=' + (currentPage - 1)}}">이전</a>
+                </button>
+
+                <button th:each="pageNumber : ${#numbers.sequence(startPage, endPage)}" style="display: inline-block">
+                    <a class="page-link" th:href="@{${'/index?page=' + pageNumber}}" th:text="${pageNumber}"></a>
+                </button>
+
+
+                <button th:if="${currentPage < totalPages}" style="display: inline-block">
+                    <a class="page-link" th:href="@{${'/index?page=' + (currentPage + 1)}}">다음</a>
+                </button>
+
+                <button style="display: inline-block">
+                    <a class="page-link" th:href="@{${'/index?page=' + totalPages}}">마지막페이지</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
